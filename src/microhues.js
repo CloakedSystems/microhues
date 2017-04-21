@@ -147,6 +147,10 @@ var mh = {
     }
   },
 
+  play: function() {
+    return window.MicroHues.playSong.bind(window.MicroHues)()
+  },
+
   playSong: function() {
     return this.changeSong(this.songIndex)
   },
@@ -780,7 +784,7 @@ var mh = {
   config: { // defaults
     "defaultEmitter": undefined,
     "defaultSong": 0,
-    "respack": "https://pub.coderobe.net/assets/microhues/music"
+    "respack": undefined
   }
 }
 
