@@ -40,8 +40,8 @@ var mh = {
   /* Ready to roll? */
   ready: false,
 
-  /* Player status */
-  playing: false,
+  /* Is the player paused? */
+  paused: false,
 
   /* Audio context */
   audioCtx: new AudioContext(),
@@ -215,7 +215,21 @@ var mh = {
       this.emitter.sendTo("volumechange", this.muted, this.savedGain)
     }
   },
+  
+  pause: function() {
+    if (!paused) {
+      this.audioCtx.suspend()
+      this.paused = true
+    }
+  },
 
+  unpause: function() {
+    if (paused) {
+      this.audioCtx.resume()
+      this.paused = false
+    }
+  },
+  
   setVolume: function(db) {
     this.savedGain = db
     this.clampGain()
